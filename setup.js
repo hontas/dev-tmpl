@@ -7,6 +7,7 @@ var getDefaults = require('./utils/defaults');
 var rejectEmpty = require('./utils/rejectEmpty');
 var transform = require('./utils/transform');
 var write = require('./utils/write');
+var install = require('./utils/install');
 var uninstall = require('./utils/uninstall');
 var pkg = require('./package.json');
 
