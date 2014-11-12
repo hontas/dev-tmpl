@@ -26,6 +26,7 @@ npm test
 
 # To Do
 
+- setup installs dependencies || git-clone hook fix
 - remove dependencies from package.json
 - uninstall npm dependencies
 - remove temp files
