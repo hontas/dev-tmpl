@@ -12,7 +12,10 @@ module.exports = function (defaults) {
             'name': 'name',
             'message': 'name',
             'default': defaults.name,
-            'type': 'input'
+            'type': 'input',
+            filter: function(input) {
+                return input.replace(' ', '-').replace(/^[._]*/, '');
+            }
         },
         {
             'name': 'version',
