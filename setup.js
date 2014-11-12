@@ -8,7 +8,6 @@ var rejectEmpty = require('./utils/rejectEmpty');
 var transform = require('./utils/transform');
 var write = require('./utils/write');
 var uninstall = require('./utils/uninstall');
-var update = require('./utils/update');
 var pkg = require('./package.json');
 
 var g = chalk.gray;
