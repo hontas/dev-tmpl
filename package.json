@@ -20,10 +20,5 @@
     "lodash": "^2.4.1",
     "open": "0.0.5",
     "q": "^1.0.1"
-  },
-  "devDependencies": {
-    "chai": "^1.9.2",
-    "gulp": "^3.8.9",
-    "gulp-task-loader": "^1.0.7"
   }
 }
