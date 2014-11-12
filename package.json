@@ -8,8 +8,7 @@
     "url": "github.com/hontas/dev-tmpl.git"
     },
   "scripts": {
-    "test": "mocha test/* --growl -R nyan",
-    "postinstall": "bower install"
+    "test": "mocha test/* --growl -R nyan"
   },
   "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
   "license": "MIT",
