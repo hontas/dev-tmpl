@@ -13,6 +13,7 @@ Rename the folder from `dev-tmpl` to that of your choosing and cd into it.
 
 ```sh
 npm install
+node setup
 ```
 
 # Test

@@ -9,7 +9,7 @@
     },
   "scripts": {
     "test": "mocha test/* --growl -R nyan",
-    "postinstall": "bower install && node setup"
+    "postinstall": "bower install"
   },
   "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
   "license": "MIT",
