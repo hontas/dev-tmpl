@@ -11,9 +11,12 @@ var remove = require('./utils/remove');
 var update = require('./utils/update');
 var pkg = require('./package.json');
 
-console.log(chalk.cyan('=================='));
-console.log(chalk.green('Dev Template'), chalk.gray(pkg.version));
-console.log(chalk.cyan('=================='));
+var g = chalk.gray;
+var y = chalk.yellow;
+
+console.log(chalk.cyan('===================='));
+console.log(chalk.green(' Dev Template'), chalk.gray(pkg.version));
+console.log(chalk.cyan('===================='));
 
 getDefaults()
 	.then(getUserInput);
@@ -55,10 +58,17 @@ function actOnInput(answers) {
 function cleanUtils(answers) {
 	if (answers.cleanup) {
 		console.log(chalk.red('Removing'), 'temporary files');
-		//fs.rmdir('utils');
+		fs.rmdir('utils', displayFinito);
+	} else {
+		displayFinito();
 	}
+}
 
-	console.log(chalk.cyan('============='));
-	console.log(chalk.yellow('Finito banana'));
-	console.log(chalk.cyan('============='));
+function displayFinito() {
+	var g = chalk.gray;
+	var y = chalk.yellow;
+
+	console.log(g('==============='));
+	console.log(y(' Finito banana '));
+	console.log(g('==============='));
 }
