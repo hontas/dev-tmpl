@@ -50,25 +50,34 @@ function actOnInput(answers) {
 		.then(uninstall)
 		.then(install)
 		.then(cleanUtils)
+		.then(displayFinito)
 		.catch(function(err) {
 			console.log(chalk.red(err));
 		});
 }
 
 function cleanUtils(answers) {
+	var deferred = Q.defer();
+
 	if (answers.cleanup) {
 		console.log(chalk.red('Removing'), 'temporary files');
-		fs.rmdir('utils', displayFinito);
+		fs.rmdir('utils', function() {
+			deferred.resolve(answers);
+		});
 	} else {
-		displayFinito();
+		deferred.resolve(answers);
 	}
+
+	return deferred.promise;
 }
 
-function displayFinito() {
+function displayFinito(args) {
 	var g = chalk.gray;
 	var y = chalk.yellow;
 
 	console.log(g('==============='));
 	console.log(y(' Finito banana '));
 	console.log(g('==============='));
+
+	return args;
 }
