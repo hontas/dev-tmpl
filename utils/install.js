@@ -26,7 +26,5 @@ module.exports = function(answers) {
 	cmd('npm', ['install'].concat(dependencies.npm, '--save-dev'))
 		.then(installBowerPackages, deferred.reject, log);
 
-	deferred.resolve(answers);
-
 	return deferred.promise;
 };
