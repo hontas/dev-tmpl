@@ -11,10 +11,10 @@ function stringifine(json) {
 module.exports = function(answers) {
 	var deferred = Q.defer();
 
-	var bowerFile = process.cwd() + '/bower-test.json';
+	var bowerFile = process.cwd() + '/bower.json';
 	var bowerJson = createBowerJson(answers);
 
-	var packageFile = process.cwd() + '/package-test.json';
+	var packageFile = process.cwd() + '/package.json';
 	var packageJson = createPackageJson(answers);
 
 	function done() {

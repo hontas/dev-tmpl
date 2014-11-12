@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/* --growl -R nyan",
-    "postinstall": "bower install"
+    "postinstall": "bower install && node setup"
   },
   "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
   "license": "MIT",

@@ -1,20 +1,18 @@
 Dev Template
 ============
 
-# Install
+# Get it!
 
 ```sh
 git clone https://github.com/hontas/dev-tmpl.git
-cd dev-tmpl
-npm install
 ```
 
-# Setup
+# Use it!
 
-Rename the folder from `dev-template` to that of your choosing.
+Rename the folder from `dev-tmpl` to that of your choosing and cd into it.
 
 ```sh
-node setup
+npm install
 ```
 
 # Test
@@ -26,7 +24,7 @@ npm test
 
 # To Do
 
-- setup installs dependencies
+- npm install installs bower dependencies && kick-starts setup
 - remove dependencies from package.json
 - uninstall npm dependencies
 - remove temp files
