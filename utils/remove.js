@@ -5,7 +5,7 @@ var dependencies = require('../package.json').dependencies;
 
 function displayProgress(progress) {
 	if (progress) {
-		console.log(chalk.gray(data));
+		console.log(chalk.gray(progress));
 	}
 }
 
