@@ -1,0 +1,7 @@
+# excluded directories
+bower_components/
+node_modules/
+dist/
+
+# excluded files
+*.log

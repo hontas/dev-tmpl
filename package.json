@@ -1,0 +1,24 @@
+{
+  "name": "dev-tmpl",
+  "version": "1.0.0",
+  "description": "Get developing quickly with dev-tmpl",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/* --growl -R nyan"
+  },
+  "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
+  "license": "MIT",
+  "dependencies": {
+    "bower-logger": "^0.2.2",
+    "chalk": "^0.5.1",
+    "inquirer": "^0.8.0",
+    "lodash": "^2.4.1",
+    "open": "0.0.5",
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "gulp": "^3.8.9",
+    "gulp-task-loader": "^1.0.7"
+  }
+}
