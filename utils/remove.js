@@ -17,7 +17,7 @@ module.exports = function(answers) {
 	}
 
 	if (answers.cleanup) {
-		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies)).join(' ')));
+		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies)).join(' '));
 		cmd('npm', ['uninstall'].concat(Object.keys(dependencies)))
 			.then(done, null, displayProgress);
 	} else {
