@@ -4,9 +4,9 @@ Dev Template
 # Install
 
 ```sh
-git clone https://github.com/hontas/dev-template.git
+git clone https://github.com/hontas/dev-tmpl.git
+cd dev-tmpl
 npm install
-bower install
 ```
 
 # Setup
@@ -26,7 +26,7 @@ npm test
 
 # To Do
 
-- setup installs dependencies || git-clone hook fix
+- setup installs dependencies
 - remove dependencies from package.json
 - uninstall npm dependencies
 - remove temp files

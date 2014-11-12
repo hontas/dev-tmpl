@@ -4,7 +4,8 @@
   "description": "Get developing quickly with dev-tmpl",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/* --growl -R nyan"
+    "test": "mocha test/* --growl -R nyan",
+    "postinstall": "bower install"
   },
   "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
   "license": "MIT",
