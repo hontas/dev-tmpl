@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Get developing quickly with dev-tmpl",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/hontas/dev-tmpl.git"
+    },
   "scripts": {
     "test": "mocha test/* --growl -R nyan",
     "postinstall": "bower install && node setup"
