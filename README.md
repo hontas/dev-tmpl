@@ -24,6 +24,8 @@ npm test
 
 # To Do
 
+- clear git history
+- remove setup file
 - npm install installs bower dependencies && kick-starts setup
 - remove dependencies from package.json
 - uninstall npm dependencies

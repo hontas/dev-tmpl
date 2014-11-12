@@ -3,7 +3,7 @@ var _ = require('lodash');
 var parseUrl = require('./parseUrl');
 var chalk = require('chalk');
 
-// configure to usa mustache style lookup
+// configure to use a mustache style lookup
 _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
 module.exports = function(json) {

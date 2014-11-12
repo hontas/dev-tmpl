@@ -3,18 +3,25 @@ var cmd = require('./cmd');
 var chalk = require('chalk');
 var dependencies = require('../package.json').dependencies;
 
+function displayProgress(progress) {
+	if (progress) {
+		console.log(chalk.gray(data));
+	}
+}
+
 module.exports = function(answers) {
 	var deferred = Q.defer();
 
-	if (answers.cleanup) {
-		console.log(chalk.red('Uninstalling'), 'temporary packages');
-		console.log(chalk.gray(['npm', 'uninstall'].concat(Object.keys(dependencies)).join(' ')));
-		cmd('npm', ['uninstall'].concat(Object.keys(dependencies)))
-		.then(function() {
-			deferred.resolve(answers);
-		});
-	} else {
+	function done(answers) {
 		deferred.resolve(answers);
+	}
+
+	if (answers.cleanup) {
+		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies)).join(' ')));
+		cmd('npm', ['uninstall'].concat(Object.keys(dependencies)))
+			.then(done, null, displayProgress);
+	} else {
+		done(answers);
 	}
 
 	return deferred.promise;
