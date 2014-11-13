@@ -1,31 +1,52 @@
-Dev Template
-============
+dev-tmpl
+========
 
-# Get it!
+Get developin' in no time!
+Use it the as-is or fork and create your own starting template.
+
+## Get it!
 
 ```sh
 git clone https://github.com/hontas/dev-tmpl.git
 ```
 
-# Use it!
+## Use it!
 
-Rename the folder from `dev-tmpl` to that of your choosing and cd into it.
+Rename the folder from `dev-tmpl` to that of your choosing and `cd` into it.
 
 ```sh
 npm install
-node setup
+npm start
+```
+## Fork it!
+
+Create your own custom template!
+
+### Configure
+
+#### Freshly installed dependencies
+Specify what npm & bower packages you wish to install in `utils/dependancy.js`
+
+```js
+module.exports = {
+	npm: [],
+	bower: []
+};
 ```
 
-# Test
+#### Default values
+Take a look in `utils/defaults.js` to change default prompt values
+
+## Test it!
 
 ```sh
 npm install -g mocha
 npm test
 ```
 
-# To Do
+## To Do
 
-- rename dir to name set in setup?
+- quick mode! ()
 - clear git history
 - remove setup file
 - npm install installs bower dependencies && kick-starts setup

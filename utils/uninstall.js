@@ -1,7 +1,8 @@
 var Q = require('q');
 var cmd = require('./cmd');
 var chalk = require('chalk');
-var dependencies = require('../package.json').dependencies;
+var packageJson = require('../package.json');
+var dependencies = packageJson.dependencies.concat(packageJson.devDependencies);
 
 module.exports = function(answers) {
 	var deferred = Q.defer();

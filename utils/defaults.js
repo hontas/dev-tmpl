@@ -3,7 +3,7 @@ var cmd = require('./cmd');
 
 module.exports = function() {
 	var deferred = Q.defer();
-	var res = {
+	var defaults = {
 		name: process.cwd().split('/').pop(),
 		version: '1.0.0',
 		main: 'index.js',
@@ -27,15 +27,15 @@ module.exports = function() {
 	];
 
 	Q.allSettled(promises).spread(function(name, email, url, npmName, npmEmail) {
-		res.author = getValue(name) || getValue(npmName);
-		res.email = getValue(email) || getValue(npmEmail);
-		res.url = getValue(url);
+		defaults.author = getValue(name) || getValue(npmName);
+		defaults.email = getValue(email) || getValue(npmEmail);
+		defaults.url = getValue(url);
 
-		if (res.url && res.name) {
-			res.repository = res.url + '/' + res.name + '.git';
+		if (defaults.url && defaults.name) {
+			defaults.repository = defaults.url + '/' + defaults.name + '.git';
 		}
 
-		deferred.resolve(res);
+		deferred.resolve(defaults);
 	});
 
 	return deferred.promise;
