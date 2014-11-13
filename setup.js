@@ -9,6 +9,7 @@ var transform = require('./utils/transform');
 var write = require('./utils/write');
 var install = require('./utils/install');
 var uninstall = require('./utils/uninstall');
+var remove = require('./utils/remove');
 var pkg = require('./package.json');
 
 var g = chalk.gray;
@@ -49,26 +50,11 @@ function actOnInput(answers) {
 		.then(write)
 		.then(uninstall)
 		.then(install)
-		.then(cleanUtils)
+		.then(remove)
 		.then(displayFinito)
 		.catch(function(err) {
 			console.log(chalk.red(err));
 		});
-}
-
-function cleanUtils(answers) {
-	var deferred = Q.defer();
-
-	if (answers.cleanup) {
-		console.log(chalk.red('Removing'), 'temporary files');
-		fs.rmdir('utils', function() {
-			deferred.resolve(answers);
-		});
-	} else {
-		deferred.resolve(answers);
-	}
-
-	return deferred.promise;
 }
 
 function displayFinito(args) {
