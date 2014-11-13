@@ -16,10 +16,16 @@ module.exports = function(answers) {
 		deferred.resolve(answers)
 	}
 
-	if (answers.setupGit) {
-		console.log(chalk.green('First commit!'));
+	function commit() {
 		cmd('git', ['commit', '-a', '-m', '"first commit"'])
 			.then(done, deferred.reject, log);
+	}
+
+	if (answers.setupGit) {
+		console.log(chalk.green('First commit!'));
+		cmd('git', ['rm', 'setup.js'])
+			.then(commit, deferred.reject, log);
+
 	} else {
 		done();
 	}
