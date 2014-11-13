@@ -2,6 +2,7 @@ var Q = require('q');
 var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require("inquirer");
+var commit = require('./utils/commit');
 var prompt = require('./utils/prompt');
 var getDefaults = require('./utils/defaults');
 var rejectEmpty = require('./utils/rejectEmpty');
@@ -53,6 +54,7 @@ function actOnInput(answers) {
 		.then(uninstall)
 		.then(install)
 		.then(remove)
+		.then(commit)
 		.then(displayFinito)
 		.catch(function(err) {
 			console.log(chalk.red(err));
@@ -66,6 +68,8 @@ function displayFinito(args) {
 	console.log(g('==============='));
 	console.log(y(' Finito banana '));
 	console.log(g('==============='));
+
+	fs.unlink(process.cwd() + '/setup.js');
 
 	return args;
 }

@@ -19,7 +19,7 @@ module.exports = function(answers) {
 	if (answers.setupGit) {
 		open('https://github.com/new');
 		console.log(chalk.green('Setting'), 'remote origin to', chalk.cyan(answers.repository));
-		cmd('git', ['remote', 'set-url', 'origin', answers.repository])
+		cmd('git', ['commit', '-a', '-m', '"first commit"'])
 			.then(done, deferred.reject, log);
 	} else {
 		done();
@@ -28,3 +28,4 @@ module.exports = function(answers) {
 	return deferred.promise;
 
 };
+
