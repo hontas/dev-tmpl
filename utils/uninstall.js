@@ -3,16 +3,16 @@ var cmd = require('./cmd');
 var chalk = require('chalk');
 var dependencies = require('../package.json').dependencies;
 
-function displayProgress(progress) {
-	if (progress) {
-		console.log(chalk.gray(progress));
-	}
-}
-
 module.exports = function(answers) {
 	var deferred = Q.defer();
 
-	function done(answers) {
+	function log(progress) {
+		if (progress) {
+			console.log(chalk.gray(progress));
+		}
+	}
+
+	function done() {
 		console.log(chalk.green('Uninstalled successfull'));
 		deferred.resolve(answers);
 	}
@@ -20,9 +20,9 @@ module.exports = function(answers) {
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies).join(' ')));
 		cmd('npm', ['uninstall'].concat(Object.keys(dependencies)))
-			.then(done, deferred.reject, displayProgress);
+			.then(done, deferred.reject, log);
 	} else {
-		done(answers);
+		done();
 	}
 
 	return deferred.promise;
