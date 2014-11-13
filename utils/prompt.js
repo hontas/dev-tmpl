@@ -45,7 +45,12 @@ module.exports = function (defaults) {
             'name': 'repository',
             'message': 'git repository',
             'default': function(answers) {
-                console.log(answers);
+                console.log(answers.name);
+                console.log(defaults.name);
+                var match = defaults.repository.match(answers.name);
+                if (!match) {
+                    return defaults.repository.replace(defaults.name, answers.name);
+                }
                 return defaults.repository;
             },
             'type': 'input',
