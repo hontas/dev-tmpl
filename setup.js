@@ -2,7 +2,7 @@ var Q = require('q');
 var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require("inquirer");
-var promptUser = require('./utils/prompt');
+var prompt = require('./utils/prompt');
 var getDefaults = require('./utils/defaults');
 var rejectEmpty = require('./utils/rejectEmpty');
 var transform = require('./utils/transform');
@@ -24,7 +24,7 @@ getDefaults()
 	.then(getUserInput);
 
 function getUserInput(defs) {
-	promptUser(defs)
+	prompt(defs)
 		.then(rejectEmpty)
 		.then(confirm);
 }
