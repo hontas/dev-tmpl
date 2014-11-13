@@ -25,7 +25,7 @@ module.exports = function(answers) {
 	function getUrl() {
 		var arr = answers.repository.split('/');
 		arr.pop();
-		return arr.join('') + '/new';
+		return arr.join('/') + '/new';
 	}
 
 	if (answers.setupGit) {
