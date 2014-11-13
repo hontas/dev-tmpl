@@ -6,6 +6,9 @@ var dependencies = require('./dependencies');
 module.exports = function(answers) {
 	var deferred = Q.defer();
 
+	console.log('install');
+	console.log(answers);
+
 	function log(str) {
 		if (str) {
 			console.log(chalk.gray(str));
