@@ -1,4 +1,5 @@
 var Q = require('q');
+var fs = require('fs');
 var chalk = require('chalk');
 
 module.exports = function(answers) {
@@ -14,7 +15,6 @@ module.exports = function(answers) {
 			}
 		});
 	} else {
-		console.log('no clean');
 		deferred.resolve(answers);
 	}
 
