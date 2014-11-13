@@ -5,7 +5,7 @@ module.exports = function(answers) {
 	var deferred = Q.defer();
 
 	console.log('clean task');
-	console.log('answers');
+	console.log(answers);
 
 	if (answers.cleanup) {
 		console.log(chalk.red('Removing'), 'temporary files');

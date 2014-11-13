@@ -22,14 +22,8 @@ module.exports = function(answers) {
 			.then(done, deferred.reject, log);
 	}
 
-	function getUrl() {
-		var arr = answers.repository.split('/');
-		arr.pop();
-		return arr.join('/') + '/new';
-	}
-
 	if (answers.setupGit) {
-		open(getUrl());
+		open('https://github.com/new');
 		console.log(chalk.green('Setting'), 'remote origin to', chalk.cyan(answers.repository));
 		cmd('git', ['remote', 'set-url', 'origin', answers.repository])
 			.then(commit, deferred.reject, log);

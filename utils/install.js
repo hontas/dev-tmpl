@@ -8,7 +8,7 @@ module.exports = function(answers) {
 
 	function log(str) {
 		if (str) {
-			console.log(str);
+			console.log(chalk.gray(str));
 		}
 	}
 
