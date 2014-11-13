@@ -7,6 +7,7 @@ var getDefaults = require('./utils/defaults');
 var rejectEmpty = require('./utils/rejectEmpty');
 var transform = require('./utils/transform');
 var write = require('./utils/write');
+var setupGit = require('./utils/setupGit');
 var install = require('./utils/install');
 var uninstall = require('./utils/uninstall');
 var remove = require('./utils/remove');
@@ -48,6 +49,7 @@ function confirm(answers) {
 function actOnInput(answers) {
 	transform(answers)
 		.then(write)
+		.then(setupGit)
 		.then(uninstall)
 		.then(install)
 		.then(remove)

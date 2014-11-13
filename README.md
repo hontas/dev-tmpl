@@ -25,6 +25,7 @@ npm test
 
 # To Do
 
+- rename dir to name set in setup?
 - clear git history
 - remove setup file
 - npm install installs bower dependencies && kick-starts setup

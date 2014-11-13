@@ -44,7 +44,10 @@ module.exports = function (defaults) {
         {
             'name': 'repository',
             'message': 'git repository',
-            'default': defaults.repository,
+            'default': function(answers) {
+                console.log(answers);
+                return defaults.repository;
+            },
             'type': 'input',
             'when': willSetupGit
         },

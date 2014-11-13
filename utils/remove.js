@@ -14,6 +14,7 @@ module.exports = function(answers) {
 			}
 		});
 	} else {
+		console.log('no clean');
 		deferred.resolve(answers);
 	}
 
