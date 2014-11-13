@@ -1,8 +1,12 @@
 var gulp = require('gulp'),
-	config = require('../config');
+	karma = require('karma').server,
+	config = require('../config'),
+	karmaConf = '../karma.conf.js';
 
-module.exports = function() {
-
+module.exports = function(cb) {
+	karma.start({
+		config: karmaConf
+	}, cb);
 };
 
 module.exports.dependencies = [];
