@@ -4,8 +4,7 @@ var gulp = require('gulp'),
 
 module.exports = function(cb) {
 	karma.start({
-		configFile: process.cwd() + '/karma.conf.js',
-		singleRun: true
+		configFile: process.cwd() + '/karma.conf.js'
 	}, cb);
 };
 
