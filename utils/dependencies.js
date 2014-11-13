@@ -5,7 +5,8 @@ module.exports = {
 		'gulp-task-loader',
 		'karma',
 		'karma-mocha',
-		'karma-chai'
+		'karma-chai',
+		'karma-nyan-reporter'
 	],
 	bower: [
 		'font-awesome'

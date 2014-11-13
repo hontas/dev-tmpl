@@ -40,7 +40,6 @@ Take a look in `utils/defaults.js` to change default prompt values
 ## Test it!
 
 ```sh
-npm install -g mocha
 npm test
 ```
 
