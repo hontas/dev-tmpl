@@ -13,7 +13,7 @@ module.exports = function(answers) {
 	}
 
 	function done() {
-		deferred.resolve(answers)
+		deferred.resolve(answers);
 	}
 
 	function commit() {

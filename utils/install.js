@@ -15,7 +15,7 @@ module.exports = function(answers) {
 	function installBowerPackages() {
 		console.log(chalk.green('Installing'), 'bower packages', chalk.gray(dependencies.bower.join(' ')));
 		cmd('bower', ['install'].concat(dependencies.bower, '--save'))
-			.then(done, deferred.reject, log)
+			.then(done, deferred.reject, log);
 	}
 
 	function done() {

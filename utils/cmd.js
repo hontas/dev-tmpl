@@ -24,20 +24,17 @@ module.exports = function(command, args, options, log) {
     });
 
     process.on('close', function (code) {
-        var fullCommand;
-        var error;
+        function getError() {
+            var fullCommand = command + args.length ? ' ' + args.join(' ') : '';
+            return 'Failed to execute "' + fullCommand + '", exit code of #' + code, 'ECMDERR';
+        }
 
         if (code) {
             if (!Array.isArray(args)) {
                 args = [];
             }
 
-            fullCommand = command;
-            fullCommand += args.length ? ' ' + args.join(' ') : '';
-
-            error = 'Failed to execute "' + fullCommand + '", exit code of #' + code, 'ECMDERR';
-
-            return deferred.reject(error);
+            return deferred.reject(getError());
         }
 
         return deferred.resolve(stdout);

@@ -6,7 +6,7 @@
   "repository": {
     "type": "git",
     "url": "github.com/hontas/dev-tmpl.git"
-    },
+  },
   "scripts": {
     "start": "node setup",
     "test": "mocha test/* --growl -R nyan"
@@ -20,5 +20,8 @@
     "lodash": "^2.4.1",
     "open": "0.0.5",
     "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "gulp-task-loader": "^1.0.7"
   }
 }

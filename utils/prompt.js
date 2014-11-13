@@ -92,4 +92,4 @@ module.exports = function (defaults) {
     inquirer.prompt(questions, deferred.resolve);
 
 	return deferred.promise;
-}
+};
