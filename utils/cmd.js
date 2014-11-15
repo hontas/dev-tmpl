@@ -1,7 +1,8 @@
 var Q = require('q');
 var cp = require('child_process');
 
-module.exports = function(command, args, options, log) {
+module.exports = function(command, args, options) {
+    'use strict';
     var stderr = '';
     var stdout = '';
     var deferred = Q.defer();

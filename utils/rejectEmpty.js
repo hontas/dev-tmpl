@@ -1,6 +1,7 @@
 var Q = require('q');
 
 module.exports = function(json) {
+	'use strict';
 	var deferred = Q.defer();
 
 	var res = Object.keys(json).reduce(function(res, key) {

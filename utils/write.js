@@ -4,11 +4,8 @@ var chalk = require('chalk');
 var createBowerJson = require('./createBowerJson');
 var createPackageJson = require('./createPackageJson');
 
-function stringifine(json) {
-	return JSON.stringify(json, null, '  ') + '\n';
-}
-
 module.exports = function(answers) {
+	'use strict';
 	var deferred = Q.defer();
 
 	var bowerFile = process.cwd() + '/bower.json';
@@ -16,6 +13,10 @@ module.exports = function(answers) {
 
 	var packageFile = process.cwd() + '/package.json';
 	var packageJson = createPackageJson(answers);
+
+	function stringifine(json) {
+		return JSON.stringify(json, null, '  ') + '\n';
+	}
 
 	function done() {
 		deferred.resolve(answers); // pass answers on

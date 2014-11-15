@@ -1,10 +1,11 @@
-var gulp = require('gulp'),
-	karma = require('karma').server,
-	config = require('../config');
+var karma = require('karma').server,
+	cfg = require('../config'),
+	configFile = [process.cwd(), cfg.test.config].join('/');
 
 module.exports = function(cb) {
+	'use strict';
 	karma.start({
-		configFile: process.cwd() + '/karma.conf.js',
+		configFile: configFile,
 		singleRun: true
 	}, cb);
 };

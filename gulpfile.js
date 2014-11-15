@@ -1,3 +1,4 @@
+/* jshint node: true, strict: false */
 var gulp = require('gulp'),
 	config = require('./config');
 

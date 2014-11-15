@@ -4,6 +4,7 @@ var chalk = require('chalk');
 var dependencies = require('./dependencies');
 
 module.exports = function(answers) {
+	'use strict';
 	var deferred = Q.defer();
 
 	function log(str) {

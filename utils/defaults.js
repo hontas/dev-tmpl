@@ -1,7 +1,9 @@
+/* jshint maxparams: 5 */
 var Q = require('q');
 var cmd = require('./cmd');
 
 module.exports = function() {
+	'use strict';
 	var deferred = Q.defer();
 	var defaults = {
 		name: process.cwd().split('/').pop(),
@@ -17,7 +19,7 @@ module.exports = function() {
 		}
 	}
 
-	// guess name / email / url from git/npm settings
+	// guess name, email & url from git / npm settings
 	var promises = [
 		cmd('git', ['config', '--get', '--global', 'user.name']),
 		cmd('git', ['config', '--get', '--global', 'user.email']),
@@ -27,7 +29,7 @@ module.exports = function() {
 	];
 
 	Q.allSettled(promises).spread(function(name, email, url, npmName, npmEmail) {
-		defaults.author = getValue(name) || getValue(npmName);
+		defaults.author = getValue(name) || getValue(npmName);
 		defaults.email = getValue(email) || getValue(npmEmail);
 		defaults.url = getValue(url);
 

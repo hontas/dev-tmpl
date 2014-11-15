@@ -1,5 +1,6 @@
 describe("First test", function() {
 	it("should fail", function() {
-		expect(false).to.be.true;
+		var is = sinon.stub().returns(true);
+		expect(is()).to.be.false;
 	});
 });

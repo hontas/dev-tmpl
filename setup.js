@@ -1,7 +1,7 @@
-var Q = require('q');
+/* jshint node: true */
 var fs = require('fs');
 var chalk = require('chalk');
-var inquirer = require("inquirer");
+var inquirer = require('inquirer');
 var commit = require('./utils/commit');
 var prompt = require('./utils/prompt');
 var getDefaults = require('./utils/defaults');
@@ -14,40 +14,26 @@ var uninstall = require('./utils/uninstall');
 var remove = require('./utils/remove');
 var pkg = require('./package.json');
 
-var g = chalk.gray;
-var y = chalk.yellow;
-
 console.log(chalk.cyan('===================='));
 console.log(chalk.green(' Dev Template'), chalk.gray(pkg.version));
 console.log(chalk.cyan('===================='));
 
-getDefaults()
-	.then(getUserInput);
+function displayFinito(args) {
+	'use strict';
+	var g = chalk.gray;
+	var y = chalk.yellow;
 
-function getUserInput(defs) {
-	prompt(defs)
-		.then(rejectEmpty)
-		.then(confirm);
-}
+	console.log(g('==============='));
+	console.log(y(' Finito banana '));
+	console.log(g('==============='));
 
-function confirm(answers) {
-	console.log(answers);
+	fs.unlink(process.cwd() + '/setup.js');
 
-	inquirer.prompt({
-		name: 'confirm',
-		type: 'confirm',
-		message: 'Look good?',
-		default: true
-	}, function(answer) {
-		if (answer.confirm) {
-			actOnInput(answers);
-		} else {
-			getUserInput(answers);
-		}
-	});
+	return args;
 }
 
 function actOnInput(answers) {
+	'use strict';
 	transform(answers)
 		.then(write)
 		.then(setupGit)
@@ -61,15 +47,32 @@ function actOnInput(answers) {
 		});
 }
 
-function displayFinito(args) {
-	var g = chalk.gray;
-	var y = chalk.yellow;
+function confirm(answers) {
+	'use strict';
+	console.log(answers);
 
-	console.log(g('==============='));
-	console.log(y(' Finito banana '));
-	console.log(g('==============='));
+	function handleAnswer(answer) {
+		if (answer.confirm) {
+			actOnInput(answers);
+		} else {
+			getUserInput(answers);
+		}
+	}
 
-	fs.unlink(process.cwd() + '/setup.js');
-
-	return args;
+	inquirer.prompt({
+		name: 'confirm',
+		type: 'confirm',
+		message: 'Look good?',
+		default: true
+	}, handleAnswer);
 }
+
+function getUserInput(defs) {
+	'use strict';
+	prompt(defs)
+		.then(rejectEmpty)
+		.then(confirm);
+}
+
+getDefaults()
+	.then(getUserInput);

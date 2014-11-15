@@ -1,10 +1,20 @@
 var createJsonFrom = require('./createJsonFrom');
 
 module.exports = function(json) {
-	var properties = ['name', 'version', 'description', 'main', 'keywords', 'authors', 'licence', 'homepage', 'private'];
+	'use strict';
 	var repo = json.repository;
+	var properties = [
+		'name',
+		'version',
+		'description',
+		'main',
+		'keywords',
+		'authors',
+		'licence',
+		'homepage',
+		'private'
+	];
 
-	// update bower.json from answers
 	var pkg = createJsonFrom(properties, json, require('../bower.json'));
 
 	if (repo) {

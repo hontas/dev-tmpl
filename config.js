@@ -1,18 +1,27 @@
+/* jshint node: true */
 var dist = 'dist/';
 var resources = 'bower_components/';
 
-var config = {
-		src: {
-			js: []
-		},
+module.exports = {
+	src: {
+		js: [
+			'src/**/*.js'
+		]
+	},
 
-		assets: ['bower_components/font-awesome/fonts/'],
+	assets: [
+		resources + 'font-awesome/fonts/'
+	],
 
-		dist: {
-			target: [dist]
-		},
+	dist: {
+		target: [ dist ],
+		styles: dist + 'css/'
+	},
 
-		tests: ['test/**/*.js']
-	};
-
-module.exports = config;
+	test: {
+		config: 'karma.conf.js',
+		src: [
+			'test/**/*.js',
+		]
+	}
+};

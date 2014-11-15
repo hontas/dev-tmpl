@@ -5,6 +5,7 @@ var packageJson = require('../package.json');
 var dependencies = packageJson.dependencies.concat(packageJson.devDependencies);
 
 module.exports = function(answers) {
+	'use strict';
 	var deferred = Q.defer();
 
 	function log(progress) {

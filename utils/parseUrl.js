@@ -1,7 +1,7 @@
 module.exports = function(url) {
+	'use strict';
 	if (!url) { return; }
 
-	var res = {};
 	var slashed = url.split('/');
 	var fileName = slashed.pop();
 	var punctured = fileName.split('.');

@@ -1,21 +1,31 @@
 var Q = require('q');
-var inquirer = require("inquirer");
-
-function willSetupGit(answers) {
-    return answers.setupGit;
-}
+var inquirer = require('inquirer');
 
 module.exports = function (defaults) {
-	var deferred = Q.defer();
+    'use strict';
+    var deferred = Q.defer();
+
+    function willSetupGit(answers) {
+        return answers.setupGit;
+    }
+
+    function clenseName(name) {
+        return name
+            .replace(' ', '-')
+            .replace(/^[._]*/, '');
+    }
+
+    function getRepo(answers) {
+        return defaults.repository.replace(defaults.name, answers.name);
+    }
+
     var questions = [
         {
             'name': 'name',
             'message': 'name',
             'default': defaults.name,
             'type': 'input',
-            filter: function(input) {
-                return input.replace(' ', '-').replace(/^[._]*/, '');
-            }
+            filter: clenseName
         },
         {
             'name': 'version',
@@ -44,9 +54,7 @@ module.exports = function (defaults) {
         {
             'name': 'repository',
             'message': 'git repository',
-            'default': function(answers) {
-                return defaults.repository.replace(defaults.name, answers.name);
-            },
+            'default': getRepo,
             'type': 'input',
             'when': willSetupGit
         },

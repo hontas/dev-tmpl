@@ -1,9 +1,9 @@
 var Q = require('q');
 var cmd = require('./cmd');
-var open = require('open');
 var chalk = require('chalk');
 
 module.exports = function(answers) {
+	'use strict';
 	var deferred = Q.defer();
 
 	function log(msg) {

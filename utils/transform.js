@@ -1,12 +1,12 @@
 var Q = require('q');
 var _ = require('lodash');
 var parseUrl = require('./parseUrl');
-var chalk = require('chalk');
 
 // configure to use a mustache style lookup
 _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
 module.exports = function(json) {
+	'use strict';
 	var deferred = Q.defer();
 	var repo = json.repository && parseUrl(json.repository);
 
@@ -14,24 +14,27 @@ module.exports = function(json) {
 		delete json.private;
 	}
 
-	if (json.author) {
-		if (json.email) {
+	function setAuthor(json) {
+		if (json.author && json.email) {
 			json.author += _.template(' <{{email}}>', json);
-			json.authors = [json.author];
-		}
-
-		if (repo) {
-			json.author += _.template(' ({{gitHome}})', { gitHome: repo.base });
 		}
 	}
 
+	function setAuthors(json) {
+		if (json.author) {
+			json.authors = [ json.author ];
+		}
+	}
+
+	setAuthor(json);
+	setAuthors(json);
+
 	if (repo) {
+		json.author += _.template(' ({{gitHome}})', { gitHome: repo.base });
 		json.homepage = repo.repo;
 	}
 
-	if (json.keywords) {
-		json.keywords = json.keywords.split(' ');
-	}
+	json.keywords = json.keywords && json.keywords.split(' ');
 
 	deferred.resolve(json);
 	return deferred.promise;

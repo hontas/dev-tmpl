@@ -24,8 +24,8 @@
 	"maxcomplexity": 4,
 	"maxlen": 120,
 
-	"browser": true,
-	"node": false,
+	"browser": false,
+	"node": true,
 
 	"predef": []
 }
