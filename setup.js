@@ -2,17 +2,23 @@
 var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
-var commit = require('./utils/commit');
-var prompt = require('./utils/prompt');
-var getDefaults = require('./utils/defaults');
-var rejectEmpty = require('./utils/rejectEmpty');
-var transform = require('./utils/transform');
-var write = require('./utils/write');
-var setupGit = require('./utils/setupGit');
-var install = require('./utils/install');
-var uninstall = require('./utils/uninstall');
-var remove = require('./utils/remove');
 var pkg = require('./package.json');
+
+function byExtension(fileName) {
+	'use strict';
+	return /\.js$/.test(fileName);
+}
+
+function requireFiles(res, fileName) {
+	'use strict';
+	var name = fileName.replace(/\.js$/, '');
+	res[name] = require('./utils/' + name);
+	return res;
+}
+
+var m = fs.readdirSync('utils')
+	.filter(byExtension)
+	.reduce(requireFiles, {});
 
 console.log(chalk.cyan('===================='));
 console.log(chalk.green(' Dev Template'), chalk.gray(pkg.version));
@@ -34,13 +40,13 @@ function displayFinito(args) {
 
 function actOnInput(answers) {
 	'use strict';
-	transform(answers)
-		.then(write)
-		.then(setupGit)
-		.then(uninstall)
-		.then(install)
-		.then(remove)
-		.then(commit)
+	m.transform(answers)
+		.then(m.write)
+		.then(m.setupGit)
+		.then(m.uninstall)
+		.then(m.install)
+		.then(m.remove)
+		.then(m.commit)
 		.then(displayFinito)
 		.catch(function(err) {
 			console.log(chalk.red(err));
@@ -69,10 +75,10 @@ function confirm(answers) {
 
 function getUserInput(defs) {
 	'use strict';
-	prompt(defs)
-		.then(rejectEmpty)
+	m.prompt(defs)
+		.then(m.rejectEmpty)
 		.then(confirm);
 }
 
-getDefaults()
+m.defaults()
 	.then(getUserInput);

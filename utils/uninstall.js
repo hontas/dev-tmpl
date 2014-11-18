@@ -1,12 +1,14 @@
 var Q = require('q');
 var cmd = require('./cmd');
 var chalk = require('chalk');
-var packageJson = require('../package.json');
-var dependencies = packageJson.dependencies.concat(packageJson.devDependencies);
+var pkgJson = require('../package.json');
 
 module.exports = function(answers) {
 	'use strict';
-	var deferred = Q.defer();
+
+	function keys(obj) {
+		return Object.keys(obj);
+	}
 
 	function log(progress) {
 		if (progress) {
@@ -18,6 +20,9 @@ module.exports = function(answers) {
 		console.log(chalk.green('Uninstalled successfull'));
 		deferred.resolve(answers);
 	}
+
+	var deferred = Q.defer();
+	var dependencies = [].concat(keys(pkgJson.dependencies), keys(pkgJson.devDependencies));
 
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies).join(' ')));

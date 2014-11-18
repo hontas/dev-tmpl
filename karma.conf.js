@@ -11,7 +11,7 @@ module.exports = function(config) {
 		// will be used to resolve files and exclude
 		basePath: '',
 
-		frameworks: ['mocha', 'chai'],
+		frameworks: ['mocha', 'sinon-chai'],
 
 		// - '**/*.js'
 		// - { pattern: '**/*.js', include: true|false }

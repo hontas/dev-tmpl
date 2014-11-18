@@ -11,6 +11,7 @@ gulp.task('default', ['test', 'build']);
 gulp.task('build', ['styles', 'scripts']);
 
 gulp.task('watch', function() {
+	gulp.watch(config.allJs, ['hintAll']);
 	gulp.watch(config.src.js, ['default']);
-	gulp.watch(config.tests, ['test']);
+	gulp.watch(config.test.src, ['test']);
 });
