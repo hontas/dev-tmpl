@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var Q = require('q');
 var cmd = require('./cmd');
 var chalk = require('chalk');
