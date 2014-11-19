@@ -1,6 +1,6 @@
 {
   "name": "dev-tmpl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get developing quickly with dev-tmpl",
   "main": "index.js",
   "repository": {
