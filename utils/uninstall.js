@@ -24,6 +24,8 @@ module.exports = function(answers) {
 	var deferred = Q.defer();
 	var dependencies = [].concat(keys(pkgJson.dependencies), keys(pkgJson.devDependencies));
 
+	console.log('dependencies', dependencies);
+
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies).join(' ')));
 		cmd('npm', ['uninstall'].concat(Object.keys(dependencies)))
