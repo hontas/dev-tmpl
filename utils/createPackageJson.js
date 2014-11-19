@@ -23,9 +23,5 @@ module.exports = function(json) {
 		pkg.homepage = repo.repo;
 	}
 
-	if (json.cleanup) {
-		delete pkg.dependencies;
-	}
-
 	return pkg;
 };
