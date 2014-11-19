@@ -3,22 +3,7 @@ var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 var pkg = require('./package.json');
-
-function byExtension(fileName) {
-	'use strict';
-	return /\.js$/.test(fileName);
-}
-
-function requireFiles(res, fileName) {
-	'use strict';
-	var name = fileName.replace(/\.js$/, '');
-	res[name] = require('./utils/' + name);
-	return res;
-}
-
-var m = fs.readdirSync('utils')
-	.filter(byExtension)
-	.reduce(requireFiles, {});
+var m = require('require-dir')('utils');
 
 console.log(chalk.cyan('===================='));
 console.log(chalk.green(' Dev Template'), chalk.gray(pkg.version));

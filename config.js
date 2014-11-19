@@ -1,10 +1,9 @@
 /* jshint node: true */
-//var bowerCfg = require('./.bowerrc');
 
 var src = 'src/';
 var dist = 'dist/';
 var test = 'test/';
-var resources = 'bower_components/'; //bowerCfg && bowerCfg.directory ||
+var resources = 'bower_components/';
 
 var script = src + 'js/';
 var styles = src + 'less/';
@@ -24,7 +23,7 @@ module.exports = {
 	},
 
 	assets: {
-		fonts: [ resources + 'font-awesome/fonts/*' ]
+		copyable: [ resources + 'component/*' ]
 	},
 
 	dist: {
