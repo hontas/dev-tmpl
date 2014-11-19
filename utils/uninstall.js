@@ -7,7 +7,7 @@ module.exports = function(answers) {
 	'use strict';
 
 	function keys(obj) {
-		return Object.keys(obj);
+		return _.isObject(obj) ? Object.keys(obj) : [];
 	}
 
 	function log(progress) {
@@ -21,10 +21,23 @@ module.exports = function(answers) {
 		deferred.resolve(answers);
 	}
 
-	var deferred = Q.defer();
-	var dependencies = [].concat(keys(pkgJson.dependencies), keys(pkgJson.devDependencies));
+	function getDependencies() {
+		var deps = pkgJson.dependencies;
+		var devDeps = pkgJson.devDependencies;
 
-	console.log('dependencies', dependencies);
+		var depKeys = keys(deps);
+		var devDepKeys = keys(devDeps);
+
+		console.log(deps);
+		console.log(devDeps);
+
+		return [].concat(depKeys, devDepKeys);
+	};
+
+	var deferred = Q.defer();
+	var dependencies = getDependencies();
+
+	console.log(dependencies);
 
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies).join(' ')));
