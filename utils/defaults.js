@@ -7,7 +7,7 @@ module.exports = function() {
 	var deferred = Q.defer();
 	var defaults = {
 		name: process.cwd().split('/').pop(),
-		version: '1.0.0',
+		version: '0.0.0',
 		main: 'index.js',
 		licence: 'MIT',
 		private: false
