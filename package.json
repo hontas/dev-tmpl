@@ -8,8 +8,7 @@
     "url": "github.com/hontas/dev-tmpl.git"
   },
   "scripts": {
-    "start": "node setup",
-    "test": "karma start"
+    "start": "node setup"
   },
   "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
   "license": "MIT",
@@ -19,16 +18,6 @@
     "lodash": "^2.4.1",
     "open": "0.0.5",
     "q": "^1.0.1",
-    "reqr": "^1.0.0",
     "require-dir": "^0.1.0"
-  },
-  "devDependencies": {
-    "gulp-task-loader": "^1.0.8",
-    "karma": "^0.12.24",
-    "karma-mocha": "^0.1.9",
-    "karma-nyan-reporter": "0.0.50",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-sinon-chai": "^0.2.0",
-    "mocha": "^2.0.1"
   }
 }
