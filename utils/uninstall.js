@@ -23,26 +23,18 @@ module.exports = function(answers) {
 	}
 
 	function getDependencies() {
-		var deps = pkgJson.dependencies;
-		var devDeps = pkgJson.devDependencies;
+		var deps = keys(pkgJson.dependencies);
+		var devDeps = keys(pkgJson.devDependencies);
 
-		var depKeys = keys(deps);
-		var devDepKeys = keys(devDeps);
-
-		console.log(deps);
-		console.log(devDeps);
-
-		return [].concat(depKeys, devDepKeys);
+		return [].concat(deps, devDeps);
 	};
 
 	var deferred = Q.defer();
 	var dependencies = getDependencies();
 
-	console.log(dependencies);
-
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies).join(' ')));
-		cmd('npm', ['uninstall'].concat(Object.keys(dependencies)))
+		cmd('npm', ['uninstall'].concat(dependencies))
 			.then(done, deferred.reject, log);
 	} else {
 		done();
