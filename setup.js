@@ -18,9 +18,8 @@ function displayFinito(args) {
 	console.log(y(' Finito banana '));
 	console.log(g('==============='));
 
-	fs.unlink(process.cwd() + '/setup.js');
-
-	return args;
+	// self destruct
+	fs.unlinkSync(process.cwd() + '/setup.js');
 }
 
 function actOnInput(answers) {
