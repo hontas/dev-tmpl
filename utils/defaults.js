@@ -11,7 +11,8 @@ module.exports = function() {
 		version: '0.0.0',
 		main: 'index.js',
 		licence: 'MIT',
-		private: false
+		private: false,
+		cleanup: true
 	};
 
 	function getValue(promise) {

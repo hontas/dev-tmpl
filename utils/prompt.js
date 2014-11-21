@@ -112,13 +112,20 @@ module.exports = function (defaults) {
         {
             'name': 'cleanup',
             'message': 'Remove temp files?',
-            'default': true,
+            'default': defaults.cleanup,
             'type': 'confirm',
             'when': inSlowMode
         }
     ];
 
-    inquirer.prompt(questions, deferred.resolve);
+    inquirer.prompt(questions, function(answers) {
+        if (inSlowMode(answers)) {
+            deferred.resolve(answers);
+        } else {
+            defaults.repository = getRepo(defaults);
+            deferred.resolve(defaults);
+        }
+    });
 
 	return deferred.promise;
 };
