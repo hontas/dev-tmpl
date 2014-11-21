@@ -16,7 +16,6 @@ module.exports = function (defaults) {
     }
 
     function inSlowMode(answers) {
-        console.log(answers);
         return !answers.quick;
     }
 
