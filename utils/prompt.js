@@ -6,7 +6,7 @@ module.exports = function (defaults) {
     var deferred = Q.defer();
 
     function willSetupGit(answers) {
-        return inSlowMode() && answers.setupGit;
+        return inSlowMode(answers) && answers.setupGit;
     }
 
     function clenseName(name) {
@@ -16,7 +16,6 @@ module.exports = function (defaults) {
     }
 
     function inSlowMode(answers) {
-        console.log(answers);
         return !answers.quick;
     }
 
