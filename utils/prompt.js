@@ -6,7 +6,7 @@ module.exports = function (defaults) {
     var deferred = Q.defer();
 
     function willSetupGit(answers) {
-        return answers.setupGit;
+        return inSlowMode() && answers.setupGit;
     }
 
     function clenseName(name) {
@@ -15,41 +15,56 @@ module.exports = function (defaults) {
             .replace(/^[._]*/, '');
     }
 
+    function inSlowMode(answers) {
+        return !answers.quick;
+    }
+
     function getRepo(answers) {
         return defaults.repository.replace(defaults.name, answers.name);
     }
 
     var questions = [
         {
+            'name': 'quick',
+            'message': 'quick mode',
+            'default': defaults.quick,
+            'type': 'confirm'
+        },
+        {
             'name': 'name',
             'message': 'name',
             'default': defaults.name,
             'type': 'input',
-            filter: clenseName
+            filter: clenseName,
+            'when': inSlowMode
         },
         {
             'name': 'version',
             'message': 'version',
             'default': defaults.version,
-            'type': 'input'
+            'type': 'input',
+            'when': inSlowMode
         },
         {
             'name': 'description',
             'message': 'description',
             'default': defaults.description,
-            'type': 'input'
+            'type': 'input',
+            'when': inSlowMode
         },
         {
             'name': 'main',
             'message': 'main file',
             'default': defaults.main,
-            'type': 'input'
+            'type': 'input',
+            'when': inSlowMode
         },
         {
             'name': 'setupGit',
             'message': 'setup git',
             'default': defaults.setupGit,
-            'type': 'confirm'
+            'type': 'confirm',
+            'when': inSlowMode
         },
         {
             'name': 'repository',
@@ -62,38 +77,44 @@ module.exports = function (defaults) {
             'name': 'keywords',
             'message': 'keywords',
             'default': defaults.keywords,
-            'type': 'input'
+            'type': 'input',
+            'when': inSlowMode
         },
         {
             'name': 'author',
             'message': 'author',
             'default': defaults.author,
-            'type': 'input'
+            'type': 'input',
+            'when': inSlowMode
         },
         {
             'name': 'email',
             'message': 'email',
             'default': defaults.email,
-            'type': 'input'
+            'type': 'input',
+            'when': inSlowMode
         },
         {
             'name': 'licence',
             'message': 'licence',
             'default': defaults.licence,
             'type': 'input',
-            'choices': ['MIT', 'ISC', 'BSD', 'GPL']
+            'choices': ['MIT', 'ISC', 'BSD', 'GPL'],
+            'when': inSlowMode
         },
         {
             'name': 'private',
             'message': 'mark package as private',
             'default': defaults.private,
-            'type': 'confirm'
+            'type': 'confirm',
+            'when': inSlowMode
         },
         {
             'name': 'cleanup',
             'message': 'Remove temp files?',
             'default': true,
-            'type': 'confirm'
+            'type': 'confirm',
+            'when': inSlowMode
         }
     ];
 
