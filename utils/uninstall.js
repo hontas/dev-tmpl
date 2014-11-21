@@ -14,6 +14,7 @@ module.exports = function(answers) {
 
 	function log(progress) {
 		if (progress) {
+			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}
 	}
@@ -46,7 +47,7 @@ module.exports = function(answers) {
 	var dependencies = getDependencies();
 
 	if (answers.cleanup) {
-		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(Object.keys(dependencies).join(' ')));
+		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(dependencies).join(' '));
 		cmd('npm', ['uninstall'].concat(dependencies))
 			.then(reWriteJson, deferred.reject, log)
 			.then(done, deferred.reject, log);
