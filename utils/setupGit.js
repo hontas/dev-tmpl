@@ -14,7 +14,7 @@ module.exports = function(answers) {
 	}
 
 	function clearGitHistory() {
-		return cmd('rm', ['-rf', '.git');
+		return cmd('rm', ['-rf', '.git']);
 	}
 
 	function initNewRepo() {
