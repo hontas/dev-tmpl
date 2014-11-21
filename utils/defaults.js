@@ -6,6 +6,7 @@ module.exports = function() {
 	'use strict';
 	var deferred = Q.defer();
 	var defaults = {
+		quick: false,
 		name: process.cwd().split('/').pop(),
 		version: '0.0.0',
 		main: 'index.js',
