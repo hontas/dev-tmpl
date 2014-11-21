@@ -13,6 +13,18 @@ module.exports = function(answers) {
 		}
 	}
 
+	function clearGitHistory() {
+		return cmd('rm', ['-rf', '.git');
+	}
+
+	function initNewRepo() {
+		return cmd('git', ['init']);
+	}
+
+	function setupRemoteOrigin() {
+		return cmd('git', ['remote', 'add', 'origin', answers.repository]);
+	}
+
 	function done() {
 		deferred.resolve(answers);
 	}
@@ -20,7 +32,9 @@ module.exports = function(answers) {
 	if (answers.setupGit) {
 		open('https://github.com/new');
 		console.log(chalk.green('Setting'), 'remote origin to', chalk.cyan(answers.repository));
-		cmd('git', ['remote', 'set-url', 'origin', answers.repository])
+		clearGitHistory()
+			.then(initNewRepo)
+			.then(setupRemoteOrigin)
 			.then(done, deferred.reject, log);
 	} else {
 		done();
