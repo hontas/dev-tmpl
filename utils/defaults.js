@@ -10,6 +10,7 @@ module.exports = function() {
 		name: process.cwd().split('/').pop(),
 		version: '0.0.0',
 		main: 'index.js',
+		setupGit: true,
 		licence: 'MIT',
 		private: false,
 		cleanup: true
