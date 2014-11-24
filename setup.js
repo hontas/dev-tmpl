@@ -1,5 +1,4 @@
 /* jshint node: true */
-var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 var pkg = require('./package.json');
@@ -17,9 +16,6 @@ function displayFinito(args) {
 	console.log(g('==============='));
 	console.log(y(' Finito banana '));
 	console.log(g('==============='));
-
-	// self destruct
-	fs.unlinkSync(process.cwd() + '/setup.js');
 }
 
 function actOnInput(answers) {
