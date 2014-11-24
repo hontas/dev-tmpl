@@ -35,9 +35,12 @@ module.exports = function(answers) {
 		clearGitHistory()
 			.then(initNewRepo)
 			.then(setupRemoteOrigin)
-			.then(done, deferred.reject, log);
+			.then(done)
+			.catch(deferred.reject);
 	} else {
-		done();
+		clearGitHistory
+			.then(done)
+			.catch(deferred.reject);
 	}
 
 	return deferred.promise;
