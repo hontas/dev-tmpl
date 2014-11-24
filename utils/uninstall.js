@@ -32,7 +32,6 @@ module.exports = function(answers) {
 	}
 
 	function done() {
-		console.log(chalk.green('Successfully removed dependencies'));
 		deferred.resolve(answers);
 	}
 
