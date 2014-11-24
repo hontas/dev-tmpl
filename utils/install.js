@@ -9,7 +9,7 @@ module.exports = function(answers) {
 
 	function log(str) {
 		if (str) {
-			console.log(chalk.gray(str));
+			console.log(chalk.gray(str.replace(/\n/, '')));
 		}
 	}
 
