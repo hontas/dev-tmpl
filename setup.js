@@ -18,7 +18,7 @@ function displayFinito(answers) {
 	console.log(y(' Finito banana '));
 	console.log(g('==============='));
 
-	if (!answers.setupGit) {
+	if (answers.cleanup && !answers.setupGit) {
 		fs.unlinkSync(process.cwd() + '/setup.js');
 	}
 }

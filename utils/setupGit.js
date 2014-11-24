@@ -38,7 +38,7 @@ module.exports = function(answers) {
 			.then(done)
 			.catch(deferred.reject);
 	} else {
-		clearGitHistory
+		clearGitHistory()
 			.then(done)
 			.catch(deferred.reject);
 	}
