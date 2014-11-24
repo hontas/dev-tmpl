@@ -17,13 +17,18 @@ module.exports = function(answers) {
 	}
 
 	function commit() {
-		cmd('git', ['commit', '-a', '-m', '"first commit"'])
+		return cmd('git', ['commit', '-a', '-m', '"first commit"'])
 			.then(done, deferred.reject, log);
+	}
+
+	function removeSetup() {
+		return cmd('git', ['rm', 'setup.js']);
 	}
 
 	if (answers.setupGit) {
 		console.log(chalk.green('First commit!'));
-		cmd('git', ['rm', 'setup.js'])
+		cmd('git', ['add', '.'])
+			.then(removeSetup, deferred.reject, log)
 			.then(commit, deferred.reject, log);
 
 	} else {

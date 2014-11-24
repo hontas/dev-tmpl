@@ -8,7 +8,7 @@ module.exports = function(answers) {
 
 	function log(msg) {
 		if (msg) {
-			console.log(chalk.gray(msg));
+			console.log(chalk.gray(msg.replace(/\n/, '')));
 		}
 	}
 
