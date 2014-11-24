@@ -49,7 +49,7 @@ module.exports = function(answers) {
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(dependencies));
 		cmd('npm', ['uninstall'].concat(dependencies))
-			.then(reWriteJson, deferred.reject, log)
+			.then(reWriteJson, deferred.reject)
 			.then(done, deferred.reject);
 	} else {
 		done();

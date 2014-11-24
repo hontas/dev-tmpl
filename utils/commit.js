@@ -17,8 +17,7 @@ module.exports = function(answers) {
 	}
 
 	function commit() {
-		return cmd('git', ['commit', '-a', '-m', '"first commit"'])
-			.then(done, deferred.reject, log);
+		return cmd('git', ['commit', '-a', '-m', '"first commit"']);
 	}
 
 	function removeSetup() {
@@ -28,8 +27,9 @@ module.exports = function(answers) {
 	if (answers.setupGit) {
 		console.log(chalk.green('First commit!'));
 		cmd('git', ['add', '.'])
-			.then(removeSetup, deferred.reject, log)
-			.then(commit, deferred.reject, log);
+			.then(removeSetup, deferred.reject)
+			.then(commit, deferred.reject)
+			.then(done);
 
 	} else {
 		done();

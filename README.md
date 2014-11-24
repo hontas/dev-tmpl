@@ -45,13 +45,4 @@ npm test
 
 ## To Do
 
-- quick mode! ()
-- break out utils-loader to its own module
-- clear git history
-- remove setup file
-- npm install installs bower dependencies && kick-starts setup
-- remove dependencies from package.json
-- uninstall npm dependencies
-- remove temp files
-- git init
-- git connect to / create remote repo
+- add verbose flag
