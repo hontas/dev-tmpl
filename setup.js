@@ -1,4 +1,5 @@
 /* jshint node: true */
+var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 var pkg = require('./package.json');
@@ -8,7 +9,7 @@ console.log(chalk.cyan('===================='));
 console.log(chalk.green(' Dev Template'), chalk.gray(pkg.version));
 console.log(chalk.cyan('===================='));
 
-function displayFinito(args) {
+function displayFinito(answers) {
 	'use strict';
 	var g = chalk.gray;
 	var y = chalk.yellow;
@@ -16,6 +17,10 @@ function displayFinito(args) {
 	console.log(g('==============='));
 	console.log(y(' Finito banana '));
 	console.log(g('==============='));
+
+	if (!answers.setupGit) {
+		fs.unlinkSync(process.cwd() + '/setup.js');
+	}
 }
 
 function actOnInput(answers) {

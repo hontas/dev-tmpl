@@ -28,7 +28,7 @@ module.exports = function(answers) {
 		delete pkgJson.dependencies;
 		delete pkgJson.devDependencies;
 
-		return Q.nfcall(fs.writeFile, pkgJsonPath, stringifine(pkgJson))
+		return Q.nfcall(fs.writeFile, pkgJsonPath, stringifine(pkgJson));
 	}
 
 	function done() {
@@ -41,7 +41,7 @@ module.exports = function(answers) {
 		var devDeps = keys(pkgJson.devDependencies);
 
 		return [].concat(deps, devDeps);
-	};
+	}
 
 	var deferred = Q.defer();
 	var dependencies = getDependencies();
