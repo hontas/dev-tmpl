@@ -1,6 +1,7 @@
 dev-tmpl
 ========
 
+[![Build Status](https://travis-ci.org/hontas/dev-tmpl.svg?branch=master)](https://travis-ci.org/hontas/dev-tmpl)
 [![Dependency Status](https://david-dm.org/hontas/dev-tmpl.svg?style=flat)](https://david-dm.org/hontas/dev-tmpl)
 
 Get developin' in no time!
