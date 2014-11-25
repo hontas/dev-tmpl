@@ -1,16 +1,13 @@
 var Q = require('q');
 var cmd = require('./cmd');
 var chalk = require('chalk');
-var isVerbose = require('./isVerbose')();
 
 module.exports = function(answers) {
 	'use strict';
 	var deferred = Q.defer();
 
-	console.log('isVerbose', isVerbose);
-
 	function log(progress) {
-		if (isVerbose && progress) {
+		if (answers.verbose && progress) {
 			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}

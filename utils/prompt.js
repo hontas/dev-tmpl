@@ -116,6 +116,13 @@ module.exports = function (defaults) {
             'type': 'confirm',
             'when': inSlowMode
         }
+        {
+            'name': 'verbose',
+            'message': 'Verbose output?',
+            'default': defaults.verbose,
+            'type': 'confirm',
+            'when': inSlowMode
+        }
     ];
 
     inquirer.prompt(questions, function(answers) {

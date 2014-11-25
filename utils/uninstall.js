@@ -4,7 +4,6 @@ var fs = require('fs');
 var cmd = require('./cmd');
 var chalk = require('chalk');
 var pkgJson = require('../package.json');
-var isVerbose = require('./isVerbose')();
 
 module.exports = function(answers) {
 	'use strict';
@@ -14,7 +13,7 @@ module.exports = function(answers) {
 	}
 
 	function log(progress) {
-		if (isVerbose && progress) {
+		if (answers.verbose && progress) {
 			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}
