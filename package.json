@@ -8,7 +8,8 @@
     "url": "github.com/hontas/dev-tmpl.git"
   },
   "scripts": {
-    "start": "node setup"
+    "start": "node setup",
+    "test": "jshint **/*.js --exclude-path .gitignore --reporter=node_modules/jshint-stylish/stylish.js && jshint *.js --exclude-path .gitignore --reporter=node_modules/jshint-stylish/stylish.js"
   },
   "author": "Pontus Lundin <lundin.pontus@gmail.com> (https://github.com/hontas)",
   "license": "MIT",
@@ -19,5 +20,9 @@
     "open": "0.0.5",
     "q": "^1.0.1",
     "require-dir": "^0.1.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.10",
+    "jshint-stylish": "^1.0.0"
   }
 }
