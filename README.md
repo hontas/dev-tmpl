@@ -1,6 +1,8 @@
 dev-tmpl
 ========
 
+[![Dependency Status](https://david-dm.org/hontas/dev-tmpl.svg?style=flat)](https://david-dm.org/hontas/dev-tmpl)
+
 Get developin' in no time!
 Use as-is or fork it and build your own tmpl-x on top.
 
