@@ -115,7 +115,7 @@ module.exports = function (defaults) {
             'default': defaults.cleanup,
             'type': 'confirm',
             'when': inSlowMode
-        }
+        },
         {
             'name': 'verbose',
             'message': 'Verbose output?',
