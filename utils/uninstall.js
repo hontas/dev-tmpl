@@ -4,6 +4,7 @@ var fs = require('fs');
 var cmd = require('./cmd');
 var chalk = require('chalk');
 var pkgJson = require('../package.json');
+var isVerbose = require('./isVerbose')();
 
 module.exports = function(answers) {
 	'use strict';
@@ -13,7 +14,7 @@ module.exports = function(answers) {
 	}
 
 	function log(progress) {
-		if (progress) {
+		if (isVerbose && progress) {
 			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}
@@ -48,8 +49,8 @@ module.exports = function(answers) {
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(dependencies));
 		cmd('npm', ['uninstall'].concat(dependencies))
-			.then(reWriteJson, deferred.reject)
-			.then(done, deferred.reject);
+			.then(reWriteJson, deferred.reject, log)
+			.then(done, deferred.reject, log);
 	} else {
 		done();
 	}

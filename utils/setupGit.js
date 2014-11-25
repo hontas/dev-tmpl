@@ -2,13 +2,14 @@ var Q = require('q');
 var cmd = require('./cmd');
 var open = require('open');
 var chalk = require('chalk');
+var isVerbose = require('./isVerbose')();
 
 module.exports = function(answers) {
 	'use strict';
 	var deferred = Q.defer();
 
 	function log(progress) {
-		if (progress) {
+		if (isVerbose && progress) {
 			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}
@@ -34,14 +35,12 @@ module.exports = function(answers) {
 		open('https://github.com/new');
 		console.log(chalk.green('Setting'), 'remote origin to', chalk.cyan(answers.repository));
 		clearGitHistory()
-			.then(initNewRepo)
-			.then(setupRemoteOrigin)
-			.then(done)
-			.catch(deferred.reject);
+			.then(initNewRepo, deferred.reject, log)
+			.then(setupRemoteOrigin, deferred.reject, log)
+			.then(done, deferred.reject, log);
 	} else {
 		clearGitHistory()
-			.then(done)
-			.catch(deferred.reject);
+			.then(done, deferred.reject, log);
 	}
 
 	return deferred.promise;

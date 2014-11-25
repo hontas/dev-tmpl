@@ -1,14 +1,18 @@
 var Q = require('q');
 var cmd = require('./cmd');
 var chalk = require('chalk');
+var isVerbose = require('./isVerbose')();
 
 module.exports = function(answers) {
 	'use strict';
 	var deferred = Q.defer();
 
-	function log(msg) {
-		if (msg) {
-			console.log(chalk.gray(msg));
+	console.log('isVerbose', isVerbose);
+
+	function log(progress) {
+		if (isVerbose && progress) {
+			progress.replace(/\n|\r/g, '');
+			console.log(chalk.gray(progress));
 		}
 	}
 
@@ -27,9 +31,9 @@ module.exports = function(answers) {
 	if (answers.setupGit) {
 		console.log(chalk.green('First commit!'));
 		cmd('git', ['add', '.'])
-			.then(removeSetup, deferred.reject)
-			.then(commit, deferred.reject)
-			.then(done);
+			.then(removeSetup, deferred.reject, log)
+			.then(commit, deferred.reject, log)
+			.then(done, deferred.reject, log);
 
 	} else {
 		done();
