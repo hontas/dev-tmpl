@@ -13,7 +13,8 @@ module.exports = function() {
 		setupGit: true,
 		licence: 'MIT',
 		private: false,
-		cleanup: true
+		cleanup: true,
+		verbose: false
 	};
 
 	function getValue(promise) {
