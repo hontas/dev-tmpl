@@ -7,9 +7,10 @@ module.exports = function(answers) {
 	'use strict';
 	var deferred = Q.defer();
 
-	function log(str) {
-		if (str) {
-			console.log(chalk.gray(str.replace(/\n/, '')));
+	function log(progress) {
+		if (progress) {
+			progress.replace(/\n|\r/g, '');
+			console.log(chalk.gray(progress));
 		}
 	}
 
