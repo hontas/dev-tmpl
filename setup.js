@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* jshint node: true, latedef: false */
 var fs = require('fs');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
@@ -23,6 +23,11 @@ function displayFinito(answers) {
 	}
 }
 
+function displayError(err) {
+	'use strict';
+	console.log(chalk.red(err));
+}
+
 function actOnInput(answers) {
 	'use strict';
 	m.transform(answers)
@@ -33,9 +38,7 @@ function actOnInput(answers) {
 		.then(m.remove)
 		.then(m.commit)
 		.then(displayFinito)
-		.catch(function(err) {
-			console.log(chalk.red(err));
-		});
+		.catch(displayError);
 }
 
 function confirm(answers) {
@@ -62,8 +65,10 @@ function getUserInput(defs) {
 	'use strict';
 	m.prompt(defs)
 		.then(m.rejectEmpty)
-		.then(confirm);
+		.then(confirm)
+		.catch(displayError);
 }
 
 m.defaults()
-	.then(getUserInput);
+	.then(getUserInput)
+	.catch(displayError);
