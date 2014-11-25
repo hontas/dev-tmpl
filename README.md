@@ -1,6 +1,8 @@
 dev-tmpl
 ========
 
+![devDependency Status](https://david-dm.org/hontas/dev-tmpl.png)
+
 Get developin' in no time!
 Use it the as-is or fork and create your own starting template.
 
