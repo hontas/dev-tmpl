@@ -1,7 +1,7 @@
 dev-tmpl
 ========
 
-[![Dependency Status](https://david-dm.org/hontas/dev-tmpl.svg)](https://david-dm.org/hontas/dev-tmpl)
+[![Dependency Status](https://david-dm.org/hontas/dev-tmpl.svg?style=flat)](https://david-dm.org/hontas/dev-tmpl)
 
 Get developin' in no time!
 Use it the as-is or fork and create your own starting template.
