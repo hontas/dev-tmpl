@@ -8,7 +8,7 @@ module.exports = function(answers) {
 	var deferred = Q.defer();
 
 	function log(progress) {
-		if (progress) {
+		if (answers.verbose && progress) {
 			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}
