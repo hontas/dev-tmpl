@@ -25,7 +25,7 @@ module.exports = function(answers) {
 	}
 
 	console.log(chalk.green('Installing'), 'npm packages', chalk.gray(dependencies.npm.join(' ')));
-	cmd('npm', ['install'].concat(dependencies.npm, '--save-dev'))
+	cmd('sudo', ['npm', 'install'].concat(dependencies.npm, '--save-dev'))
 		.then(installBowerPackages, deferred.reject, log);
 
 	return deferred.promise;
