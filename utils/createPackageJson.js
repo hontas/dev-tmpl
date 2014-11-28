@@ -10,6 +10,10 @@ module.exports = function(json) {
 	// update package.json from answers
 	var pkg = createJsonFrom(properties, json, require('../package.json'));
 
+	pkg.scripts = {
+		test: json.test || 'echo \"Error: no test specified\" && exit 1';
+	}
+
 	if (repo) {
 		pkg.repository = {
 			type: repo.type,
