@@ -8,7 +8,7 @@ module.exports = function(answers) {
 	var deferred = Q.defer();
 
 	function log(progress) {
-		if (answers.verbose && progress) {
+		if (progress) {
 			progress.replace(/\n|\r/g, '');
 			console.log(chalk.gray(progress));
 		}
@@ -25,7 +25,7 @@ module.exports = function(answers) {
 	}
 
 	console.log(chalk.green('Installing'), 'npm packages', chalk.gray(dependencies.npm.join(' ')));
-	cmd('sudo', ['npm', 'install'].concat(dependencies.npm, '--save-dev'))
+	cmd('npm', ['install'].concat(dependencies.npm, '--save-dev'))
 		.then(installBowerPackages, deferred.reject, log);
 
 	return deferred.promise;
