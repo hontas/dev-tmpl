@@ -74,6 +74,13 @@ module.exports = function (defaults) {
             'when': willSetupGit
         },
         {
+            'name': 'test',
+            'message': 'test command',
+            'default': defaults.test,
+            'type': 'input',
+            'when': inSlowMode
+        },
+        {
             'name': 'keywords',
             'message': 'keywords',
             'default': defaults.keywords,

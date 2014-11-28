@@ -11,6 +11,7 @@ module.exports = function() {
 		version: '0.0.0',
 		main: 'index.js',
 		setupGit: true,
+		test: '',
 		licence: 'MIT',
 		private: false,
 		cleanup: true,
