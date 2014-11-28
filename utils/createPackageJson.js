@@ -11,7 +11,7 @@ module.exports = function(json) {
 	var pkg = createJsonFrom(properties, json, require('../package.json'));
 
 	pkg.scripts = {
-		test: json.test || 'echo \"Error: no test specified\" && exit 1';
+		test: json.test || 'echo \"Error: no test specified\" && exit 1'
 	}
 
 	if (repo) {
