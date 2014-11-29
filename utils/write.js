@@ -8,14 +8,19 @@ module.exports = function(answers) {
 	'use strict';
 	var deferred = Q.defer();
 
-	var bowerFile = process.cwd() + '/bower.json';
 	var bowerJson = createBowerJson(answers);
-
-	var packageFile = process.cwd() + '/package.json';
 	var packageJson = createPackageJson(answers);
 
 	function stringifine(json) {
 		return JSON.stringify(json, null, '  ') + '\n';
+	}
+
+	function writeBowerJson() {
+		return Q.nfcall(fs.writeFile, process.cwd() + '/bower.json', stringifine(bowerJson));
+	}
+
+	function writePackageJson() {
+		return Q.nfcall(fs.writeFile, process.cwd() + '/package.json', stringifine(packageJson));
 	}
 
 	function done() {
@@ -23,10 +28,9 @@ module.exports = function(answers) {
 	}
 
 	console.log(chalk.green('Writing'), chalk.cyan('package.json'), '&', chalk.cyan('bower.json'));
-	Q.all([
-		Q.nfcall(fs.writeFile, bowerFile, stringifine(bowerJson)),
-		Q.nfcall(fs.writeFile, packageFile, stringifine(packageJson))
-	]).then(done, deferred.reject);
+	writePackageJson
+		.then(writeBowerJson, deferred.reject)
+		.then(done, deferred.reject);
 
 	return deferred.promise;
 };

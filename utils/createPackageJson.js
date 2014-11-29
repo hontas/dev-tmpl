@@ -14,8 +14,6 @@ module.exports = function(json) {
 		test: json.test || 'echo \"Error: no test specified\" && exit 1'
 	}
 
-	console.log(pkg);
-
 	if (repo) {
 		pkg.repository = {
 			type: repo.type,
@@ -28,6 +26,9 @@ module.exports = function(json) {
 
 		pkg.homepage = repo.repo;
 	}
+
+	console.log('package.json');
+	console.log(pkg);
 
 	return pkg;
 };
