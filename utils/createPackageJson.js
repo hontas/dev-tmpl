@@ -27,8 +27,5 @@ module.exports = function(json) {
 		pkg.homepage = repo.repo;
 	}
 
-	console.log('package.json');
-	console.log(pkg);
-
 	return pkg;
 };

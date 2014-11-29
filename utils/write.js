@@ -11,6 +11,9 @@ module.exports = function(answers) {
 	var bowerJson = createBowerJson(answers);
 	var packageJson = createPackageJson(answers);
 
+	console.log(packageJson);
+	console.log(stringifine(packageJson));
+
 	function stringifine(json) {
 		return JSON.stringify(json, null, '  ') + '\n';
 	}
@@ -28,7 +31,7 @@ module.exports = function(answers) {
 	}
 
 	console.log(chalk.green('Writing'), chalk.cyan('package.json'), '&', chalk.cyan('bower.json'));
-	writePackageJson
+	writePackageJson()
 		.then(writeBowerJson, deferred.reject)
 		.then(done, deferred.reject);
 

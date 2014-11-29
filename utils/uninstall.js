@@ -19,18 +19,6 @@ module.exports = function(answers) {
 		}
 	}
 
-	function stringifine(json) {
-		return JSON.stringify(json, null, '  ') + '\n';
-	}
-
-	function reWriteJson() {
-		var pkgJsonPath = process.cwd() + '/package.json';
-		delete pkgJson.dependencies;
-		delete pkgJson.devDependencies;
-
-		return Q.nfcall(fs.writeFile, pkgJsonPath, stringifine(pkgJson));
-	}
-
 	function done() {
 		deferred.resolve(answers);
 	}
@@ -48,7 +36,6 @@ module.exports = function(answers) {
 	if (answers.cleanup) {
 		console.log(chalk.red('Uninstalling'), 'temporary packages', chalk.gray(dependencies));
 		cmd('npm', ['uninstall'].concat(dependencies))
-			.then(reWriteJson, deferred.reject, log)
 			.then(done, deferred.reject, log);
 	} else {
 		done();
