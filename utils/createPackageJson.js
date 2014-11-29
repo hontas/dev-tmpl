@@ -7,14 +7,14 @@ module.exports = function(json) {
 	var repo = parseUrl(json.repository);
 	var matchProtocol = /^([a-z]+\:)?\/\//i;
 
-	// update package.json from answers
+	// update package.json with answers
 	var pkg = createJsonFrom(properties, json, require('../package.json'));
-
-	console.log(pkg);
 
 	pkg.scripts = {
 		test: json.test || 'echo \"Error: no test specified\" && exit 1'
 	}
+
+	console.log(pkg);
 
 	if (repo) {
 		pkg.repository = {
