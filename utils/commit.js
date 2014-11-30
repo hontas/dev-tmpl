@@ -22,7 +22,11 @@ module.exports = function(answers) {
 	}
 
 	function removeSetup() {
-		return cmd('git', ['rm', 'setup.js', '-f']);
+		if (answers.cleanup) {
+			return cmd('git', ['rm', 'setup.js', '-f']);
+		} else {
+			Q.resolve();
+		}
 	}
 
 	if (answers.setupGit) {
