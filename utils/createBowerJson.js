@@ -1,8 +1,7 @@
 var createJsonFrom = require('./createJsonFrom');
 
-module.exports = function(json) {
+module.exports = function(answers) {
 	'use strict';
-	var repo = json.repository;
 	var properties = [
 		'name',
 		'version',
@@ -11,17 +10,16 @@ module.exports = function(json) {
 		'keywords',
 		'authors',
 		'license',
-		'homepage',
 		'private'
 	];
 
-	var pkg = createJsonFrom(properties, json, require('../bower.json'));
+	var pkg = {};
 
-	if (repo) {
-		var repoArr = repo.split('/');
+	if (answers.repository) {
+		var repoArr = answers.repository.split('/');
 		repoArr.pop();
 		pkg.homepage = repoArr.join('/');
 	}
 
-	return pkg;
+	return createJsonFrom(properties, answers, pkg);
 };

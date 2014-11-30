@@ -3,21 +3,25 @@ var createJsonFrom = require('./createJsonFrom');
 
 module.exports = function(json) {
 	'use strict';
-	var properties = ['name', 'version', 'description', 'main', 'test', 'author', 'repository', 'keywords', 'license'];
 	var repo = parseUrl(json.repository);
-	var matchProtocol = /^([a-z]+\:)?\/\//i;
+	var protocolRegEx = /^([a-z]+\:)?\/\//i;
+	var properties = [
+		'name',
+		'version',
+		'description',
+		'main',
+		'scripts',
+		'author',
+		'keywords',
+		'license'
+	];
 
-	// update package.json with answers
-	var pkg = createJsonFrom(properties, json, require('../package.json'));
-
-	pkg.scripts = {
-		test: json.test || 'echo \"Error: no test specified\" && exit 1'
-	};
+	var pkg = {};
 
 	if (repo) {
 		pkg.repository = {
 			type: repo.type,
-			url: repo.url.replace(matchProtocol, '')
+			url: repo.url.replace(protocolRegEx, '')
 		};
 
 		pkg.bugs = {
@@ -27,5 +31,5 @@ module.exports = function(json) {
 		pkg.homepage = repo.repo;
 	}
 
-	return pkg;
+	return createJsonFrom(properties, json, pkg);
 };

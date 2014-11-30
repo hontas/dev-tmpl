@@ -10,6 +10,10 @@ module.exports = function(json) {
 	var deferred = Q.defer();
 	var repo = json.repository && parseUrl(json.repository);
 
+	json.scripts = {
+		test: json.test || 'echo \"Error: no test specified\" && exit 1'
+	};
+
 	if (json.private === false) {
 		delete json.private;
 	}

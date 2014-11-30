@@ -1,22 +1,17 @@
-module.exports = function(properties, answers, json) {
+module.exports = function(properties, source, target) {
 	'use strict';
 
-	function contains(array, value) {
-		return array.some(function(item) {
-			return item === value;
-		});
+	function stringifine(json) {
+		return JSON.stringify(json, null, '  ') + '\n';
 	}
 
-	return Object.keys(json).reduce(function(res, key) {
-		var val = answers[key];
-		if (contains(properties, key)) {
-			if (val || val === false) {
-				res[key] = val;
-			}
-		} else {
-			res[key] = json[key];
-		}
+	function copyValues(result, key) {
+		var value = source[key];
+		result[key] =  value ? value : value === false ? value : '';
+		return result;
+	}
 
-		return res;
-	}, {});
+	properties.reduce(copyValues, target);
+
+	return stringifine(target);
 };
