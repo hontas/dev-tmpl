@@ -3,7 +3,7 @@ var createJsonFrom = require('./createJsonFrom');
 
 module.exports = function(json) {
 	'use strict';
-	var properties = ['name', 'version', 'description', 'main', 'test', 'author', 'repository', 'keywords', 'licence'];
+	var properties = ['name', 'version', 'description', 'main', 'test', 'author', 'repository', 'keywords', 'license'];
 	var repo = parseUrl(json.repository);
 	var matchProtocol = /^([a-z]+\:)?\/\//i;
 

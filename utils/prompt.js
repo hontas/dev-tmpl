@@ -102,9 +102,9 @@ module.exports = function (defaults) {
             'when': inSlowMode
         },
         {
-            'name': 'licence',
-            'message': 'licence',
-            'default': defaults.licence,
+            'name': 'license',
+            'message': 'license',
+            'default': defaults.license,
             'type': 'input',
             'choices': ['MIT', 'ISC', 'BSD', 'GPL'],
             'when': inSlowMode

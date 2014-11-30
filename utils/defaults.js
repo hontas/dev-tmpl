@@ -12,7 +12,7 @@ module.exports = function() {
 		main: 'index.js',
 		setupGit: true,
 		test: '',
-		licence: 'MIT',
+		license: 'MIT',
 		private: false,
 		cleanup: true,
 		verbose: false

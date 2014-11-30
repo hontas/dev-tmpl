@@ -10,7 +10,7 @@ module.exports = function(json) {
 		'main',
 		'keywords',
 		'authors',
-		'licence',
+		'license',
 		'homepage',
 		'private'
 	];
