@@ -12,7 +12,7 @@ module.exports = function(json) {
 
 	pkg.scripts = {
 		test: json.test || 'echo \"Error: no test specified\" && exit 1'
-	}
+	};
 
 	if (repo) {
 		pkg.repository = {
