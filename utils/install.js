@@ -14,19 +14,31 @@ module.exports = function(answers) {
 		}
 	}
 
+	function installOrResolve(command, packages, saveFlag) {
+		if (packages.length) {
+			return cmd(command, ['install'].concat(packages, saveFlag));
+		} else {
+			return Q.resolve();
+		}
+	}
+
 	function installBowerPackages() {
-		console.log(chalk.green('Installing'), 'bower packages', chalk.gray(dependencies.bower.join(' ')));
-		cmd('bower', ['install'].concat(dependencies.bower, '--save'))
-			.then(done, deferred.reject, log);
+		console.log(chalk.green('Installing'), 'bower packages', chalk.gray(dependencies.bower.join(', ')));
+		return installOrResolve('bower', dependencies.bower, '--save');
+	}
+
+	function installNpmPackages() {
+		console.log(chalk.green('Installing'), ' npm packages', chalk.gray(dependencies.npm.join(', ')));
+		return installOrResolve('npm', dependencies.npm, '--save-dev');
 	}
 
 	function done() {
 		deferred.resolve(answers);
 	}
 
-	console.log(chalk.green('Installing'), 'npm packages', chalk.gray(dependencies.npm.join(' ')));
-	cmd('npm', ['install'].concat(dependencies.npm, '--save-dev'))
-		.then(installBowerPackages, deferred.reject, log);
+	installNpmPackages()
+		.then(installBowerPackages, deferred.reject, log)
+		.then(done, deferred.reject, log);
 
 	return deferred.promise;
 };
