@@ -28,7 +28,7 @@ module.exports = function(answers) {
 	}
 
 	function installNpmPackages() {
-		console.log(chalk.green('Installing'), ' npm packages', chalk.gray(dependencies.npm.join(', ')));
+		console.log(chalk.green('Installing'), 'npm packages', chalk.gray(dependencies.npm.join(', ')));
 		return installOrResolve('npm', dependencies.npm, '--save-dev');
 	}
 
