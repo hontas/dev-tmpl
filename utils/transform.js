@@ -14,10 +14,6 @@ module.exports = function(json) {
 		test: json.test || 'echo \"Error: no test specified\" && exit 1'
 	};
 
-	if (json.private === false) {
-		delete json.private;
-	}
-
 	function setAuthor(json) {
 		if (json.author && json.email) {
 			json.author += _.template(' <{{email}}>', json);

@@ -1,4 +1,4 @@
-var createJsonFrom = require('./createJsonFrom');
+var jsonUtil = require('./jsonUtil');
 
 module.exports = function(answers) {
 	'use strict';
@@ -13,7 +13,7 @@ module.exports = function(answers) {
 		'private'
 	];
 
-	var pkg = {};
+	var pkg = jsonUtil.copyProps(properties, answers);
 
 	if (answers.repository) {
 		var repoArr = answers.repository.split('/');
@@ -21,5 +21,5 @@ module.exports = function(answers) {
 		pkg.homepage = repoArr.join('/');
 	}
 
-	return createJsonFrom(properties, answers, pkg);
+	return jsonUtil.stringifine(pkg);
 };

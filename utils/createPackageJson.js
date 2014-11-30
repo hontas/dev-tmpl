@@ -1,9 +1,9 @@
 var parseUrl = require('./parseUrl');
-var createJsonFrom = require('./createJsonFrom');
+var jsonUtil = require('./jsonUtil');
 
-module.exports = function(json) {
+module.exports = function(answers) {
 	'use strict';
-	var repo = parseUrl(json.repository);
+	var repo = parseUrl(answers.repository);
 	var protocolRegEx = /^([a-z]+\:)?\/\//i;
 	var properties = [
 		'name',
@@ -16,7 +16,7 @@ module.exports = function(json) {
 		'license'
 	];
 
-	var pkg = {};
+	var pkg = jsonUtil.copyProps(properties, answers);
 
 	if (repo) {
 		pkg.repository = {
@@ -31,5 +31,5 @@ module.exports = function(json) {
 		pkg.homepage = repo.repo;
 	}
 
-	return createJsonFrom(properties, json, pkg);
+	return jsonUtil.stringifine(pkg);
 };
